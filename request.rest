@@ -1,0 +1,31 @@
+
+// Client Part
+ ###
+POST http://localhost:5000/api/auth/client/register
+Content-Type: application/json
+
+{
+"username": "client",
+"email": "Admin@gmail.com",
+"password": "150"
+}
+
+###
+POST http://localhost:5000/api/auth/client/login
+Content-Type: application/json
+
+{
+"email": "Admin@gmail.com",
+"password": "150"
+}
+
+// Not Transaction is client
+###
+GET http://localhost:5000/api/auth/client
+
+# Account
+###
+GET http://localhost:5000/api/account/63c52e45ff7da29bb56801cc
+
+###
+GET http://localhost:5000/api/transaction/63c52e45ff7da29bb56801cc

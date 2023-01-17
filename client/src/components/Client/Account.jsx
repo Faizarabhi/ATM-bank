@@ -1,23 +1,23 @@
 import React from "react";
 
-export default function Accounts() {
+export default function Accounts({data}) {
     return (
         <tr>
         <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
-            1
+            {data._id}
         </td>
         <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-            Jone Doe
+            {data.client}
         </td>
         <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-            jonne62@gmail.com
+            {data.solde}
         </td>
         <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
             <a
                 className="text-green-500 hover:text-green-700"
                 href="#"
             >
-                Edit
+                {data.createdAt}
             </a>
         </td>
         <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">

@@ -1,25 +1,19 @@
 import React from "react";
 
-export default function Transaction() {
+export default function Transaction({transaction}) {
+    console.log(transaction)
     return (
         <tr>
         <td className="px-6 py-4 text-sm font-medium text-gray-800 whitespace-nowrap">
-            1
+            {transaction._id}
         </td>
         <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-            Jone Doe
+            {transaction.toAccount}
         </td>
         <td className="px-6 py-4 text-sm text-gray-800 whitespace-nowrap">
-            jonne62@gmail.com
+            {transaction.montant}
         </td>
-        <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
-            <a
-                className="text-green-500 hover:text-green-700"
-                href="#"
-            >
-                Edit
-            </a>
-        </td>
+      
         <td className="px-6 py-4 text-sm font-medium text-right whitespace-nowrap">
             <a
                 className="text-red-500 hover:text-red-700"

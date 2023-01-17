@@ -22,6 +22,7 @@ const AuthContextProvider = ({ children }) => {
             localStorage.setItem('client_id', res.data._id);
             localStorage.setItem('username', res.data.username);
             localStorage.setItem('token', res.data.token);
+            window.location.reload()
             setTimeout(() => {
                 navigate('/Home');
             }, 1000);
@@ -40,11 +41,20 @@ const AuthContextProvider = ({ children }) => {
             localStorage.setItem('client_id', res.data._id);
             localStorage.setItem('username', res.data.username);
             localStorage.setItem('token', res.data.token);
+            window.location.reload()
             setTimeout(() => {
                 navigate('/Home');
             }, 1000);
         }
     };
+
+    const logout=()=>{
+        localStorage.clear()
+        window.location.reload()
+        setTimeout(()=>{
+            navigate('/login')
+        },500)
+    }
 
     const values = useMemo(
         () => ({
@@ -55,9 +65,9 @@ const AuthContextProvider = ({ children }) => {
             error,
             setError,
             register,
-            login
+            login,logout
         }),
-        [id, setId, success, setSuccess, error, setError, register, login]
+        [id, setId, success, setSuccess, error, setError, register, login,logout]
     );
     return <AuthContext.Provider value={values}>{children}</AuthContext.Provider>;
 };

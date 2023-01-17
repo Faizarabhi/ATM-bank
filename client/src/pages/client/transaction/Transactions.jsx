@@ -1,8 +1,10 @@
-import React from "react";
+import React,{useState,useContext} from "react";
 import Transaction from '../../../components/Client/Transaction';
 import Modal from '../../../components/Modal/TransactioModal'
-
+import { TransactionContext } from './../../../context/transaction/index';
 export default function Transactions() {
+    const client_id = localStorage.getItem('client_id');
+    const { transactions } = useContext(TransactionContext);
     return (
         <div className="flex flex-col m-auto mt-32  h-screen">
             <div className="overflow-x-auto">
@@ -34,18 +36,14 @@ export default function Transactions() {
                                         scope="col"
                                         className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase "
                                     >
-                                        Edit
-                                    </th>
-                                    <th
-                                        scope="col"
-                                        className="px-6 py-3 text-xs font-bold text-right text-gray-500 uppercase "
-                                    >
                                         Delete
                                     </th>
                                 </tr>
                             </thead>
                             <tbody className="divide-y divide-gray-200">
-                                <Transaction/>
+                                {transactions.map((transaction)=>(
+                                    <Transaction key={transaction._id} transaction={transaction}/>
+                                ))}
                             </tbody>
                         </table>
                     </div>

@@ -8,22 +8,31 @@ import Account from './pages/client/account/Accounts';
 import Transaction from './pages/client/transaction/Transactions';
 import Layout from './components/Layout/Layout';
 import AuthContextProvider from './context/auth';
+import PrivateRoutes from './utils/index';
+import TransactionContextProvider from './context/transaction';
+import AccountContextProvider from './context/account';
 
 function App() {
   return (
     <>
       <Router>
         <AuthContextProvider>
-          <Routes>
-            <Route path="/register" exact element={<Register />} />
-            <Route path="/login" exact element={<Login />} />
-            <Route path="*" exact element={<Error />} />
+          <TransactionContextProvider>
+            <AccountContextProvider>
+              <Routes>
+                <Route path="/register" exact element={<Register />} />
+                <Route path="/login" exact element={<Login />} />
+                <Route path="*" exact element={<Error />} />
 
 
-            <Route path="/Home" exact element={<Layout><Home /></Layout>} />
-            <Route path="/Account" exact element={<Layout><Account /></Layout>} />
-            <Route path="/Transaction" exact element={<Layout><Transaction /></Layout>} />
-          </Routes>
+                <Route element={<PrivateRoutes />}>
+                  <Route path="/Home" exact element={<Layout><Home /></Layout>} />
+                  <Route path="/Account" exact element={<Layout><Account /></Layout>} />
+                  <Route path="/Transaction" exact element={<Layout><Transaction /></Layout>} />
+                </Route>
+              </Routes>
+            </AccountContextProvider>
+          </TransactionContextProvider>
         </AuthContextProvider>
       </Router>
     </>

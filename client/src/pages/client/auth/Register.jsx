@@ -2,7 +2,10 @@ import React, { useContext, useEffect } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import { RegisterSchema } from '../../../Validation/Register'
 import { AuthContext } from '../../../context/auth/index';
+import { token } from '../../../Config/Token';
+import { useNavigate } from 'react-router-dom';
 export default function Register() {
+    const navigate=useNavigate()
     const { register } = useContext(AuthContext)
 
     const values = {
@@ -10,6 +13,9 @@ export default function Register() {
         email: '',
         password: ''
     };
+    useEffect(()=>{
+        token ? navigate('/Home') : navigate('/register') 
+    },[token])// [token,...]==>depedencies
     const onSubmit = (values) => {
         register(values)
     };

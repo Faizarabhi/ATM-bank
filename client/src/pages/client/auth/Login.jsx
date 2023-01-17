@@ -2,8 +2,8 @@ import React, { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field,ErrorMessage } from 'formik';
 import { LoginSchema} from '../../../Validation/Login'
-import { login, reset } from '../../../features/auth/authSlice'
 import { AuthContext } from '../../../context/auth/index';
+import { token } from '../../../Config/Token';
 
 export default function Login() {
     const navigate = useNavigate()
@@ -12,6 +12,9 @@ export default function Login() {
     email: '',
     password: ''
 };
+useEffect(()=>{
+    token ? navigate('/Home') : navigate('/login') 
+},[token])// [token,...]==>depedencies
 const onSubmit = (values) => {
     login(values)
 };

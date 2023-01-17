@@ -1,6 +1,6 @@
 import React from "react";
 import Account from '../../../components/Client/Account'
-import Modal from '../../../components/Modal/Modal'
+import Modal from '../../../components/Modal/AccountModal'
 export default function Accounts() {
     return (
         <div className="flex flex-col m-auto mt-32  h-screen">

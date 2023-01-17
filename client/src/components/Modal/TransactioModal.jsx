@@ -2,10 +2,12 @@ import React from "react";
 import { Formik, Form, Field,ErrorMessage } from 'formik';
 
 
-export default function Modal() {
+export default function TransactionModal() {
   const [showModal, setShowModal] = React.useState(false);
   const values = {
-    solde: ''
+    montant: '',
+    desc:'',
+    toAccount:''
 };
 
 const onSubmit = (values) => {
@@ -15,11 +17,11 @@ const onSubmit = (values) => {
   return (
     <>
       <button
-        className="bg-pink-500 text-white active:bg-pink-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
+        className="bg-purple-500 text-white active:bg-purple-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
         type="button"
         onClick={() => setShowModal(true)}
       >
-        Add Account
+        Add Transaction
       </button>
       {showModal ? (
         <>
@@ -48,22 +50,52 @@ const onSubmit = (values) => {
                   </button>
                 </div>
                 {/*body*/}
-                <div className="my-4 mx-24">
+                
+                  <div className="my-4 mx-24">
                       <label
-                          htmlFor="solde"
+                          htmlFor="montant"
                           className="block text-sm font-semibold text-gray-800"
                       >
-                          Solde Initial
+                          Montant 
                       </label>
                       <input
-                          type="solde" name='solde' placeholder='solde'
+                          type="montant" name='montant' placeholder='montant'
                           className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
                       />
                         <span className="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
-                                    {/* <ErrorMessage name="solde" /> */}
+                                    {/* <ErrorMessage name="montant" /> */}
                                 </span>
                   </div>
-                  
+                  <div className="my-4 mx-24">
+                      <label
+                          htmlFor="desc"
+                          className="block text-sm font-semibold text-gray-800"
+                      >
+                          Description
+                      </label>
+                      <input
+                          type="desc" name='desc' placeholder='desc'
+                          className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                      />
+                        <span className="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+                                    {/* <ErrorMessage name="desc" /> */}
+                                </span>
+                  </div>
+                  <div className="my-4 mx-24">
+                      <label
+                          htmlFor="toAccount"
+                          className="block text-sm font-semibold text-gray-800"
+                      >
+                          To Account
+                      </label>
+                      <input
+                          type="toAccount" name='toAccount' placeholder='toAccount'
+                          className="block w-full px-4 py-2 mt-2 text-purple-700 bg-white border rounded-md focus:border-purple-400 focus:ring-purple-300 focus:outline-none focus:ring focus:ring-opacity-40"
+                      />
+                        <span className="flex items-center font-medium tracking-wide text-red-500 text-xs mt-1 ml-1">
+                                    {/* <ErrorMessage name="toAccount" /> */}
+                                </span>
+                  </div>
                 {/*footer*/}
                 <div className="flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b">
                   <button

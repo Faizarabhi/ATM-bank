@@ -1,11 +1,12 @@
 import React from "react";
 import Transaction from '../../../components/Client/Transaction';
-
+import Modal from '../../../components/Modal/TransactioModal'
 
 export default function Transactions() {
     return (
         <div className="flex flex-col m-auto mt-32  h-screen">
             <div className="overflow-x-auto">
+                <Modal/>
                 <div className="p-1.5 w-full inline-block align-middle">
                     <div className="overflow-hidden border rounded-lg">
                         <table className="min-w-full divide-y divide-gray-200">

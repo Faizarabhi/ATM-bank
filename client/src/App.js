@@ -4,6 +4,8 @@ import Home from './pages/client/Home'
 import Register from './pages/client/auth/Register'
 import Login from './pages/client/auth/Login'
 import Error from './pages/Error'
+import Account from './pages/client/account/Accounts';
+import Transaction from './pages/client/transaction/Transactions';
 
 function App() {
   return (
@@ -14,6 +16,10 @@ function App() {
   <Route path="/login" exact element={<Login />} />
   <Route path="/Home" exact element={<Home />} />
   <Route path="*" exact element={<Error/>} />
+
+
+  <Route path="/Account" exact element={<Account/>} />
+  <Route path="/Transaction" exact element={<Transaction/>} />
   </Routes>
   </Router>
   </>

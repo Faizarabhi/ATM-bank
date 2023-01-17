@@ -6,23 +6,27 @@ import Login from './pages/client/auth/Login'
 import Error from './pages/Error'
 import Account from './pages/client/account/Accounts';
 import Transaction from './pages/client/transaction/Transactions';
+import Layout from './components/Layout/Layout';
+import AuthContextProvider from './context/auth';
 
 function App() {
   return (
-  <>
-  <Router>
-  <Routes>
-  <Route path="/register" exact element={<Register />} />
-  <Route path="/login" exact element={<Login />} />
-  <Route path="/Home" exact element={<Home />} />
-  <Route path="*" exact element={<Error/>} />
+    <>
+      <Router>
+        <AuthContextProvider>
+          <Routes>
+            <Route path="/register" exact element={<Register />} />
+            <Route path="/login" exact element={<Login />} />
+            <Route path="*" exact element={<Error />} />
 
 
-  <Route path="/Account" exact element={<Account/>} />
-  <Route path="/Transaction" exact element={<Transaction/>} />
-  </Routes>
-  </Router>
-  </>
+            <Route path="/Home" exact element={<Layout><Home /></Layout>} />
+            <Route path="/Account" exact element={<Layout><Account /></Layout>} />
+            <Route path="/Transaction" exact element={<Layout><Transaction /></Layout>} />
+          </Routes>
+        </AuthContextProvider>
+      </Router>
+    </>
   );
 }
 

@@ -3,19 +3,17 @@ import { useNavigate } from 'react-router-dom';
 import { Formik, Form, Field,ErrorMessage } from 'formik';
 import { LoginSchema} from '../../../Validation/Login'
 import { login, reset } from '../../../features/auth/authSlice'
+import { AuthContext } from '../../../context/auth/index';
 
 export default function Login() {
     const navigate = useNavigate()
-    // const dispatch = useDispatch()
-
+    const {login} = useContext(AuthContext)
   const values = {
     email: '',
     password: ''
 };
 const onSubmit = (values) => {
-    // dispatch(login(values))
-    navigate('/Home')
-    console.log(values)
+    login(values)
 };
   return (
     <Formik initialValues={values} validationSchema={LoginSchema} onSubmit={onSubmit}>
